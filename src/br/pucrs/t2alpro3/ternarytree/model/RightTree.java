@@ -1,4 +1,4 @@
-package br.pucrs.t2alpro3.ternarytree;
+package br.pucrs.t2alpro3.ternarytree.model;
 
 public class RightTree {
 
