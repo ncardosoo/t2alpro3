@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 import br.pucrs.t2alpro3.ternarytree.enums.Position;
+import br.pucrs.t2alpro3.ternarytree.utils.TreeUtils;
 
 /**
  * 
@@ -28,18 +29,11 @@ public class LeftTree {
 	 * Load nodes from a formatted text entry
 	 * @param entry
 	 */
-	public void load(String entry) {
-		List<String> lines = new ArrayList<>();
+	public void buildLeftTree(String entry) {
 		List<Node> nodes = new ArrayList<>();
-
-		readFile(entry, lines);
-
-		Collections.sort(lines);
-		
-		buildNodesFromList(lines, nodes);
+		nodes = TreeUtils.loadNodesFromEntry(entry);
 	
 		for (Node n : nodes) {
-			System.out.println("Processing node " + n.getValue());
 			//add root
 			if(this.root == null) {
 				add(n, null, null);
@@ -64,50 +58,6 @@ public class LeftTree {
 					
 				}
 			}
-		}
-	}
-
-	private void readFile(String entry, List<String> lines) {
-		try {
-			FileReader reader = new FileReader(entry);
-			BufferedReader buff = new BufferedReader(reader);
-
-			String line = buff.readLine();
-			int counter = Integer.parseInt(line);
-			line = buff.readLine();
-
-			while (line != null && counter != 0) {
-				lines.add(line);
-				line = buff.readLine();
-				counter--;
-			}
-
-			reader.close();
-		} catch (IOException e) {
-			System.err.printf("Error: %s.\n", e.getMessage());
-		}
-	}
-	
-	private void buildNodesFromList(List<String> lines, List<Node> nodes) {
-		for (String s : lines) {
-			
-			Node aux = new Node(Integer.parseInt(s.split(" ")[0]));
-			int leftValue = Integer.parseInt(s.split(" ")[1]);
-			
-			if(leftValue != 0) {
-				aux.setLeft(new Node(leftValue));
-				aux.getLeft().setParent(aux);
-			} else {
-				aux.setLeft(null);
-			}
-			int centralValue = Integer.parseInt(s.split(" ")[2]);
-			if(centralValue != 0) {
-				aux.setCentral(new Node(centralValue));
-				aux.getCentral().setParent(aux);
-			} else {
-				aux.setCentral(null);
-			}
-			nodes.add(aux);
 		}
 	}
 
@@ -218,7 +168,7 @@ public class LeftTree {
 	public static void main(String[] args) {
 		LeftTree t = new LeftTree();
 //		t.load("input1output3.txt");
-		t.load("input2output11.txt");
+		t.buildLeftTree("input2output11.txt");
 		
 		System.out.println(t);
 	}

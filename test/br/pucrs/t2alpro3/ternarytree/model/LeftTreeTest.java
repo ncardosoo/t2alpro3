@@ -52,17 +52,14 @@ public class LeftTreeTest {
 		
 		assertEquals(lt.find(4).getValue(), 4);
 	}
-
 	
 	@Test
 	public void loadTreeFromTextInput() {
-		lt.load("input2output11.txt");
+		lt.buildLeftTree("input2output11.txt");
 		
 		assertEquals(lt.find(1).getValue(), 1);
 		assertEquals(lt.find(11), null);
 		
+		assertEquals(lt.find(5).getParent().getValue(), lt.find(4).getValue());
 	}
-	
-	
-	
 }

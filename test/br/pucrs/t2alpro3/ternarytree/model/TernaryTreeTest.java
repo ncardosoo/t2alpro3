@@ -34,7 +34,7 @@ public class TernaryTreeTest {
 	
 	@Test // C: 3 3 0 2 2 0 0 1 0 3  D: 2 2 0 0 1 2 0 S: 3
 	public void correctOutputTest() {
-		leftTree.load("3 3 0 2 2 0 0 1 0 3");
+		leftTree.buildLeftTree("3 3 0 2 2 0 0 1 0 3");
 		rightTree.load("2 2 0 0 1 2 0");
 		int expected = 3;
 		int actual = ternaryTree.merge(leftTree, rightTree);
