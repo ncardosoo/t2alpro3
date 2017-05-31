@@ -165,12 +165,39 @@ public class RightTree {
 		return null;
 	}
 
-	public static void main(String[] args) {
-		RightTree t = new RightTree();
-//		t.load("input1output3.txt");
-		t.buildRightTree("input2output11.txt");
+	public static int getLongestCentralPath(List<Node> nodes) {
+		int res = 1;
+		int aux = 1;
 		
-		System.out.println(t);
+		for(Node n : nodes) {
+			Node n1 = n;
+			while(n1.getCentral() != null) {
+				aux++;
+				n1 = n1.getCentral();
+			}
+			res = aux > res ? aux : res; 
+			aux = 1;
+		}
+		
+		return res ;
+	}
+	
+	public static List<Node> returnAllNodes(Node node){
+	    List<Node> listOfNodes = new ArrayList<Node>();
+	    addAllNodes(node, listOfNodes);
+	    return listOfNodes;
 	}
 
+	private static void addAllNodes(Node node, List<Node> listOfNodes) {
+	    if (node != null) {
+	        listOfNodes.add(node);
+	        List<Node> children = node.getChildren();
+	        if (children != null) {
+	            for (Node child: children) {
+	                addAllNodes(child, listOfNodes);
+	            }
+	        }
+	    }
+	}
+	
 }
