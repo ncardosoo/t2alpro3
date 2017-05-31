@@ -31,7 +31,7 @@ public class LeftTree {
 	 */
 	public void buildLeftTree(String entry) {
 		List<Node> nodes = new ArrayList<>();
-		nodes = TreeUtils.loadNodesFromEntry(entry);
+		nodes = TreeUtils.loadNodesFromEntry(entry, Position.LEFT);
 	
 		for (Node n : nodes) {
 			//add root
