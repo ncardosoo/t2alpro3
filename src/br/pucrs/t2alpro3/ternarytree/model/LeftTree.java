@@ -62,6 +62,7 @@ public class LeftTree {
 
 	/**
 	 * Adds a specific node to its parent
+	 * 
 	 * @param node
 	 * @param parent
 	 * @param p
@@ -165,6 +166,11 @@ public class LeftTree {
 	}
 	
 
+	/**
+	 * 
+	 * @param nodes
+	 * @return the longest path from the node passed per parameter
+	 */
 	public int getLongestCentralPath(List<Node> nodes) {
 		int res = 1;
 		int aux = 1;

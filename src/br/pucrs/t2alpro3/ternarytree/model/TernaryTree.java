@@ -1,5 +1,14 @@
 package br.pucrs.t2alpro3.ternarytree.model;
 
+/**
+ * 
+ * @author Nelson
+ * 
+ * This class represents a ternary tree, which is implemented using two partial trees (LeftTree and RightTree).
+ * 
+ * TODO: Implement, in the merge method, the process to build a ternary tree by merging the partials 
+ *
+ */
 public class TernaryTree {
 
 	
