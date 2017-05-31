@@ -45,4 +45,13 @@ public class TernaryTreeTest {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void testMergeForInput4Output251() {
+		ternaryTree = new TernaryTree("input4output251.txt");
+		int expected = 251;
+		int actual = ternaryTree.merge(ternaryTree.getLeftTree(), ternaryTree.getRightTree());
+		
+		assertEquals(expected, actual);
+	}
+	
 }

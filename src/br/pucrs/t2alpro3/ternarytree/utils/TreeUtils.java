@@ -18,6 +18,7 @@ public class TreeUtils {
 
 		readTree(entry, lines, treeType);
 		buildNodesFromList(lines, nodes, treeType);
+		Collections.sort(nodes);
 		return nodes;
 	}
 
@@ -42,7 +43,7 @@ public class TreeUtils {
 			} catch (IOException e) {
 				System.err.printf("Error: %s.\n", e.getMessage());
 			}
-			Collections.sort(lines);
+//			Collections.sort(lines);
 		} else if (Position.RIGHT.equals(treeType)) {
 			try {
 				FileReader reader = new FileReader(entry);
@@ -68,7 +69,7 @@ public class TreeUtils {
 			} catch (IOException e) {
 				System.err.printf("Error: %s.\n", e.getMessage());
 			}
-			Collections.sort(lines);
+//			Collections.sort(lines);
 		}
 	}
 

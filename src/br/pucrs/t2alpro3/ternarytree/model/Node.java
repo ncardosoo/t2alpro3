@@ -3,7 +3,7 @@ package br.pucrs.t2alpro3.ternarytree.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node {
+public class Node implements Comparable<Node>{
 	
 	private Node parent;
 	private Node central;
@@ -102,4 +102,16 @@ public class Node {
 		
 		return children;
 	}
+	
+	public int compareTo(Node other) {
+
+		if(this.getValue() < other.getValue()) {
+			return -1;
+		}
+        
+		if (this.getValue() > other.getValue()) {
+            return 1;
+        }
+        return 0;
+    }
 }
