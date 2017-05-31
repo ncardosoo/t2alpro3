@@ -18,26 +18,32 @@ public class TernaryTreeTest {
 	
 	@Before
 	public void init() {
-		ternaryTree = new TernaryTree();
-		leftTree = new LeftTree();
-		rightTree = new RightTree();
+		
 	}
 	
 	@Test
-	public void insertRootSucessfulTest() {
-		Node root = new Node(1);
-		ternaryTree.add(root);
+	public void testMergeForInput3Output6() {
+		ternaryTree = new TernaryTree("input3output6.txt");
+		int expected = 6;
+		int actual = ternaryTree.merge(ternaryTree.getLeftTree(), ternaryTree.getRightTree());
 		
-		assertEquals(root.getValue(), ternaryTree.getRoot().getValue());
+		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void testMergeForInput2Output11() {
+		ternaryTree = new TernaryTree("input2output11.txt");
+		int expected = 11;
+		int actual = ternaryTree.merge(ternaryTree.getLeftTree(), ternaryTree.getRightTree());
+		
+		assertEquals(expected, actual);
+	}
 	
-	@Test // C: 3 3 0 2 2 0 0 1 0 3  D: 2 2 0 0 1 2 0 S: 3
-	public void correctOutputTest() {
-		leftTree.buildLeftTree("3 3 0 2 2 0 0 1 0 3");
-		rightTree.buildRightTree("2 2 0 0 1 2 0");
+	@Test
+	public void testMergeForInput1Output3() {
+		ternaryTree = new TernaryTree("input1output3.txt");
 		int expected = 3;
-		int actual = ternaryTree.merge(leftTree, rightTree);
+		int actual = ternaryTree.merge(ternaryTree.getLeftTree(), ternaryTree.getRightTree());
 		
 		assertEquals(expected, actual);
 	}
