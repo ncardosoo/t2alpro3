@@ -1,10 +1,6 @@
 package br.pucrs.t2alpro3.ternarytree.model;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import br.pucrs.t2alpro3.ternarytree.enums.Position;
@@ -20,10 +16,12 @@ import br.pucrs.t2alpro3.ternarytree.utils.TreeUtils;
 public class LeftTree {
 
 	private Node root;
-	private List<Node> treeNodes;
 
 	public LeftTree() {
-		treeNodes = new ArrayList<Node>();
+	}
+	
+	public LeftTree(String entry) {
+		buildLeftTree(entry);
 	}
 
 	/**
@@ -167,7 +165,7 @@ public class LeftTree {
 	}
 	
 
-	public static int getLongestCentralPath(List<Node> nodes) {
+	public int getLongestCentralPath(List<Node> nodes) {
 		int res = 1;
 		int aux = 1;
 		
@@ -184,7 +182,7 @@ public class LeftTree {
 		return res ;
 	}
 	
-	public static List<Node> returnAllNodes(Node node){
+	public List<Node> returnAllNodes(Node node){
 	    List<Node> listOfNodes = new ArrayList<Node>();
 	    addAllNodes(node, listOfNodes);
 	    return listOfNodes;

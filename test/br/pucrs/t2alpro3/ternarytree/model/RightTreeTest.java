@@ -1,15 +1,11 @@
 package br.pucrs.t2alpro3.ternarytree.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import br.pucrs.t2alpro3.ternarytree.enums.Position;
-import br.pucrs.t2alpro3.ternarytree.model.RightTree;
-import br.pucrs.t2alpro3.ternarytree.model.Node;
-import br.pucrs.t2alpro3.ternarytree.model.RightTree;
-import br.pucrs.t2alpro3.ternarytree.model.TernaryTree;
 
 public class RightTreeTest {
 

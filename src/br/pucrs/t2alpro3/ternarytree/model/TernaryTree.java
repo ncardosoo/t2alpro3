@@ -2,7 +2,7 @@ package br.pucrs.t2alpro3.ternarytree.model;
 
 public class TernaryTree {
 
-	private Node root;
+	
 	private LeftTree leftTree;
 	private RightTree rightTree;
 	
@@ -15,6 +15,11 @@ public class TernaryTree {
 		rightTree = new RightTree();
 		this.getLeftTree().buildLeftTree(entry);
 		this.getRightTree().buildRightTree(entry);
+	}
+	
+	public TernaryTree(LeftTree leftTree, RightTree rightTree) {
+		this.setLeftTree(leftTree);
+		this.setRightTree(rightTree);
 	}
 	
 	/**

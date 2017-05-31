@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author Nelson
+ * 
+ * This class provides some methods that could be used to simplify 
+ * the process of build trees and read files, for example.
+ *
+ */
 public class TernaryTreeUtils {
-
-	public static void main(String[] args) {
-		for(String s : read()) {
-			System.out.println(s);
-		}
-	}
 
 	public static List<String> read() {
 

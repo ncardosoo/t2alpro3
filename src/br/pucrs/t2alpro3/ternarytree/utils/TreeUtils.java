@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.List;
 
 import br.pucrs.t2alpro3.ternarytree.enums.Position;
-import br.pucrs.t2alpro3.ternarytree.model.LeftTree;
 import br.pucrs.t2alpro3.ternarytree.model.Node;
 
 public class TreeUtils {
@@ -54,18 +53,15 @@ public class TreeUtils {
 				
 				while (firstCounter != 0) {
 					line = buff.readLine();
-					System.out.println(line);
 					firstCounter--;
 				}
 
 				line = buff.readLine();
-//				int counter = Integer.parseInt(line);
 				line = buff.readLine();
 
 				while (line != null) {
 					lines.add(line);
 					line = buff.readLine();
-//					counter--;
 				}
 
 				reader.close();
