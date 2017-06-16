@@ -16,11 +16,14 @@ import br.pucrs.t2alpro3.ternarytree.utils.TreeUtils;
 public class LeftTree {
 
 	private Node root;
+	private int nodesCount;
 
 	public LeftTree() {
+		setNodesCount(0);
 	}
 	
 	public LeftTree(String entry) {
+		setNodesCount(0);
 		buildLeftTree(entry);
 	}
 
@@ -29,9 +32,11 @@ public class LeftTree {
 	 * @param entry
 	 */
 	public void buildLeftTree(String entry) {
+		
 		List<Node> nodes = new ArrayList<>();
 		nodes = TreeUtils.loadNodesFromEntry(entry, Position.LEFT);
-	
+		setNodesCount(nodes.size());
+		
 		for (Node n : nodes) {
 			//add root
 			if(this.root == null) {
@@ -188,6 +193,25 @@ public class LeftTree {
 		return res ;
 	}
 	
+	/**
+	 * 
+	 * @param nodes
+	 * @return the longest path from the root
+	 */
+	public int getLongestCentralPathFromRoot(Node node) {
+		if(node.getCentral() == null) {
+			return 1;
+		}
+
+		int res = 1;
+		while(node.getCentral() != null) {
+			node= node.getCentral();
+			res++;
+		}
+		
+		return res ;
+	}
+	
 	public List<Node> returnAllNodes(Node node){
 	    List<Node> listOfNodes = new ArrayList<Node>();
 	    addAllNodes(node, listOfNodes);
@@ -204,6 +228,14 @@ public class LeftTree {
 	            }
 	        }
 	    }
+	}
+
+	public int getNodesCount() {
+		return nodesCount;
+	}
+
+	public void setNodesCount(int nodesCount) {
+		this.nodesCount = nodesCount;
 	}
 	
 }

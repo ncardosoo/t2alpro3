@@ -16,12 +16,13 @@ import br.pucrs.t2alpro3.ternarytree.utils.TreeUtils;
 public class RightTree {
 
 	private Node root;
-
+	private int nodesCount;
 	public RightTree() {
-
+		setNodesCount(0);
 	}
 	
 	public RightTree(String entry) {
+		setNodesCount(0);
 		buildRightTree(entry);
 	}
 
@@ -32,7 +33,8 @@ public class RightTree {
 	public void buildRightTree(String entry) {
 		List<Node> nodes = new ArrayList<>();
 		nodes = TreeUtils.loadNodesFromEntry(entry, Position.RIGHT);
-	
+		setNodesCount(nodes.size());
+		
 		for (Node n : nodes) {
 			//add root
 			if(this.root == null) {
@@ -59,6 +61,25 @@ public class RightTree {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * 
+	 * @param nodes
+	 * @return the longest path from the root
+	 */
+	public int getLongestCentralPathFromRoot(Node node) {
+		if(node.getCentral() == null) {
+			return 1;
+		}
+
+		int res = 1;
+		while(node.getCentral() != null) {
+			node= node.getCentral();
+			res++;
+		}
+		
+		return res ;
 	}
 
 	/**
@@ -198,6 +219,14 @@ public class RightTree {
 	            }
 	        }
 	    }
+	}
+
+	public int getNodesCount() {
+		return nodesCount;
+	}
+
+	public void setNodesCount(int nodesCount) {
+		this.nodesCount = nodesCount;
 	}
 	
 }

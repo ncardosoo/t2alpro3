@@ -1,5 +1,7 @@
 package br.pucrs.t2alpro3.ternarytree.model;
 
+import br.pucrs.t2alpro3.ternarytree.utils.TreeUtils;
+
 /**
  * 
  * @author Nelson
@@ -40,28 +42,25 @@ public class TernaryTree {
 	 * TODO: build the merged tree
 	 */
 	public int merge(LeftTree leftTree, RightTree rightTree) {
-		int res = -1;
 		
+		//e1
+		int longestLeftPathFromRoot = leftTree.getLongestCentralPathFromRoot(leftTree.getRoot());
+		//d1
+		int longestRightPathFromRoot = rightTree.getLongestCentralPathFromRoot(rightTree.getRoot());
+
+		//e
 		int longLeftPath = leftTree.getLongestCentralPath(leftTree.returnAllNodes(leftTree.getRoot()));
+		//d
 		int longRightPath = rightTree.getLongestCentralPath(rightTree.returnAllNodes(rightTree.getRoot()));
 		
-		int leftTreeSize = leftTree.returnAllNodes(leftTree.getRoot()).size();
-		int rightTreeSize = rightTree.returnAllNodes(rightTree.getRoot()).size();
-		
-		/*
-		 * When the format of both tree is a simple line, in other words, they have just
-		 * central nodes, return the size of the longest tree
-		 */
-		if(longLeftPath == leftTreeSize && longRightPath == rightTreeSize) {
-			return leftTreeSize > rightTreeSize ? leftTreeSize : rightTreeSize;
+		if(longestLeftPathFromRoot == longestRightPathFromRoot && longestRightPathFromRoot == 1) {
+			return leftTree.getNodesCount() + rightTree.getNodesCount() - 1;
 		}
 		
-		int maxSize = leftTreeSize + rightTreeSize;
-		int maxPath = longLeftPath > longRightPath ? longLeftPath : longRightPath;
+		int totalNodesCount = leftTree.getNodesCount() + rightTree.getNodesCount();
 		
-		res = maxSize - maxPath;		
+		return totalNodesCount - Math.max(Math.min(longestLeftPathFromRoot, longRightPath), Math.min(longestRightPathFromRoot, longLeftPath));
 		
-		return res;
 	}
 
 	public LeftTree getLeftTree() {
@@ -78,6 +77,12 @@ public class TernaryTree {
 
 	public void setRightTree(RightTree rightTree) {
 		this.rightTree = rightTree;
+	}
+	
+	public static void main(String[] args) {
+		TernaryTree ternaryTree = new TernaryTree("input2output11.txt");
+		System.out.println(ternaryTree.merge(ternaryTree.leftTree, ternaryTree.getRightTree()));
+		
 	}
 
 }
