@@ -13,6 +13,11 @@ import br.pucrs.t2alpro3.ternarytree.model.Node;
 public class TreeUtils {
 
 	public static long count = 0;
+	public static long countTreeOps = 0;
+	
+	public static void incrementTreeOpsBy(int value) {
+		countTreeOps = countTreeOps + value;
+	}
 	
 	public static void incrementBy(int value) {
 		count = count + value;
@@ -158,6 +163,14 @@ public class TreeUtils {
 				incrementBy(1);
 			}
 		}
+	}
+
+	public static long getCountTreeOps() {
+		return countTreeOps;
+	}
+
+	public static void setCountTreeOps(long countTreeOps) {
+		TreeUtils.countTreeOps = countTreeOps;
 	}
 	
 }

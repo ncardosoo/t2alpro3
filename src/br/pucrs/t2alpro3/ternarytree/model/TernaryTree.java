@@ -52,20 +52,30 @@ public class TernaryTree {
 		
 		//e1
 		int longestLeftPathFromRoot = leftTree.getLongestCentralPathFromRoot(leftTree.getRoot());
+		TreeUtils.incrementTreeOpsBy(2);
+		TreeUtils.incrementBy(2);
 		//d1
 		int longestRightPathFromRoot = rightTree.getLongestCentralPathFromRoot(rightTree.getRoot());
-
+		TreeUtils.incrementTreeOpsBy(2);
+		TreeUtils.incrementBy(2);
 		//e
 		int longLeftPath = leftTree.getLongestCentralPath(leftTree.returnAllNodes(leftTree.getRoot()));
+		TreeUtils.incrementTreeOpsBy(2);
+		TreeUtils.incrementBy(2);
 		//d
 		int longRightPath = rightTree.getLongestCentralPath(rightTree.returnAllNodes(rightTree.getRoot()));
-		
+		TreeUtils.incrementTreeOpsBy(2);
+		TreeUtils.incrementBy(2);
 		if(longestLeftPathFromRoot == longestRightPathFromRoot && longestRightPathFromRoot == 1) {
+			TreeUtils.incrementTreeOpsBy(6);
+			TreeUtils.incrementBy(6);
 			return leftTree.getNodesCount() + rightTree.getNodesCount() - 1;
 		}
 		
 		int totalNodesCount = leftTree.getNodesCount() + rightTree.getNodesCount();
+		TreeUtils.incrementTreeOpsBy(4);
 		
+		TreeUtils.incrementTreeOpsBy(8);
 		return totalNodesCount - Math.max(Math.min(longestLeftPathFromRoot, longRightPath), Math.min(longestRightPathFromRoot, longLeftPath));
 		
 	}

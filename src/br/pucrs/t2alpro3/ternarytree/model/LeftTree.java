@@ -196,16 +196,31 @@ public class LeftTree {
 		int res = 1;
 		int aux = 1;
 		
+		TreeUtils.incrementTreeOpsBy(2);
+		TreeUtils.incrementBy(1);
+		
 		for(Node n : nodes) {
+			TreeUtils.incrementTreeOpsBy(1);
+			TreeUtils.incrementBy(1);
 			Node n1 = n;
+			TreeUtils.incrementTreeOpsBy(1);
+			TreeUtils.incrementBy(1);
 			while(n1.getCentral() != null) {
 				aux++;
+				TreeUtils.incrementTreeOpsBy(4);
+				TreeUtils.incrementBy(4);
 				n1 = n1.getCentral();
+				TreeUtils.incrementTreeOpsBy(2);
+				TreeUtils.incrementBy(2);
 			}
 			res = aux > res ? aux : res; 
 			aux = 1;
+			TreeUtils.incrementTreeOpsBy(5);
+			TreeUtils.incrementBy(5);
 		}
 		
+		TreeUtils.incrementTreeOpsBy(1);
+		TreeUtils.incrementBy(1);
 		return res ;
 	}
 	
@@ -216,15 +231,25 @@ public class LeftTree {
 	 */
 	public int getLongestCentralPathFromRoot(Node node) {
 		if(node.getCentral() == null) {
+			TreeUtils.incrementTreeOpsBy(2);
+			TreeUtils.incrementBy(2);
 			return 1;
 		}
 
 		int res = 1;
+		TreeUtils.incrementTreeOpsBy(1);
+		TreeUtils.incrementBy(1);
 		while(node.getCentral() != null) {
+			TreeUtils.incrementTreeOpsBy(2);
+			TreeUtils.incrementBy(2);
 			node= node.getCentral();
 			res++;
+			TreeUtils.incrementTreeOpsBy(4);
+			TreeUtils.incrementBy(4);
 		}
 		
+		TreeUtils.incrementTreeOpsBy(1);
+		TreeUtils.incrementBy(1);
 		return res ;
 	}
 	

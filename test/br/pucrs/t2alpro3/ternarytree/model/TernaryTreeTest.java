@@ -31,9 +31,15 @@ public class TernaryTreeTest {
 			System.out.print(entryValue + ";");
 			System.out.println(TreeUtils.count);
 			
+			//total instructions, without including read file and build nodes and merge method
+//			System.out.println("Total instructions: " + TreeUtils.count);
+			//instructions without read file and build nodes, just merge method
+//			System.out.println("Tree instructions: " + TreeUtils.countTreeOps);
+			
 			assertEquals(expected, actual);
 			
 			TreeUtils.count = 0;
+			TreeUtils.countTreeOps = 0;
 			entryValue = 0;
 		}
 		
