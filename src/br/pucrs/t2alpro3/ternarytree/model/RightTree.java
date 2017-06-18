@@ -34,10 +34,13 @@ public class RightTree {
 		List<Node> nodes = new ArrayList<>();
 		nodes = TreeUtils.loadNodesFromEntry(entry, Position.RIGHT);
 		setNodesCount(nodes.size());
+		TreeUtils.incrementBy(1);
 		
 		for (Node n : nodes) {
+			TreeUtils.incrementBy(1);
 			//add root
 			if(this.root == null) {
+				TreeUtils.incrementBy(2);
 				add(n, null, null);
 				continue;
 			}
@@ -46,6 +49,7 @@ public class RightTree {
 			if(contains(n.getValue())) {
 				try {
 					if(!contains(n.getRight().getValue())) {
+						TreeUtils.incrementBy(2);
 						add(n.getRight(), find(n.getValue()), Position.RIGHT);
 					}
 				} catch (NullPointerException npe) {
@@ -54,6 +58,7 @@ public class RightTree {
 				
 				try {
 					if(!contains(n.getCentral().getValue())) {
+						TreeUtils.incrementBy(2);
 						add(n.getCentral(), find(n.getValue()), Position.CENTRAL);
 					}
 				} catch (NullPointerException npe) {
@@ -101,6 +106,7 @@ public class RightTree {
 		if (root == null && node != null && parent == null && node.getValue() == 1) {
 			root = node;
 			root.setParent(null);
+			TreeUtils.incrementBy(7);
 			return;
 		}
 
@@ -112,9 +118,11 @@ public class RightTree {
 		if (p.equals(Position.RIGHT)) {
 			node.setParent(parent);
 			parent.setRight(node);
+			TreeUtils.incrementBy(4);
 		} else if (p.equals(Position.CENTRAL)) {
 			node.setParent(parent);
 			parent.setCentral(node);
+			TreeUtils.incrementBy(4);
 		}
 
 	}
@@ -126,14 +134,17 @@ public class RightTree {
 	private boolean contains(Node node, int value) {
 		
 		if(node == null) {
+			TreeUtils.incrementBy(1);
 			return false;
 		}
 		
 		if(null != node && node.getValue() == value) {
+			TreeUtils.incrementBy(3);
 			return true;
 		}
 		
 		for(Node n : node.getChildren()) {
+			TreeUtils.incrementBy(2);
 			if(contains(n, value)) {
 				return true;
 			}
@@ -163,6 +174,7 @@ public class RightTree {
 	private Node find(Node node, int value) {
 		
 		if(node != null && node.getValue() == value) {
+			TreeUtils.incrementBy(3);
 			return node;
 		}
 		
@@ -170,19 +182,24 @@ public class RightTree {
 		
 		if(node != null) {
 			nodes = node.getChildrenArray();
+			TreeUtils.incrementBy(2);
 		} 
 		
 		Node res = null;
 		
 		if(nodes.length > 0) {
+			TreeUtils.incrementBy(3);
 			for(int i = 0; res == null && i < nodes.length; i++) {
+				TreeUtils.incrementBy(5);
 				res = find(nodes[i], value);
+				TreeUtils.incrementBy(2);
 				if(res != null) {
+					TreeUtils.incrementBy(1);
 					return res;
 				}
 			}
 		}
-		
+		TreeUtils.incrementBy(1);
 		return null;
 	}
 
@@ -209,7 +226,7 @@ public class RightTree {
 	    return listOfNodes;
 	}
 
-	private static void addAllNodes(Node node, List<Node> listOfNodes) {
+	private void addAllNodes(Node node, List<Node> listOfNodes) {
 	    if (node != null) {
 	        listOfNodes.add(node);
 	        List<Node> children = node.getChildren();

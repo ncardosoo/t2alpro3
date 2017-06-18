@@ -1,6 +1,9 @@
 package br.pucrs.t2alpro3.ternarytree.model;
 
+import static br.pucrs.t2alpro3.ternarytree.utils.TreeUtils.count;
+
 import br.pucrs.t2alpro3.ternarytree.utils.TreeUtils;
+
 
 /**
  * 
@@ -13,7 +16,6 @@ import br.pucrs.t2alpro3.ternarytree.utils.TreeUtils;
  */
 public class TernaryTree {
 
-	
 	private LeftTree leftTree;
 	private RightTree rightTree;
 	
@@ -24,6 +26,7 @@ public class TernaryTree {
 	public TernaryTree(String entry) {
 		leftTree = new LeftTree();
 		rightTree = new RightTree();
+		
 		this.getLeftTree().buildLeftTree(entry);
 		this.getRightTree().buildRightTree(entry);
 	}
@@ -31,6 +34,10 @@ public class TernaryTree {
 	public TernaryTree(LeftTree leftTree, RightTree rightTree) {
 		this.setLeftTree(leftTree);
 		this.setRightTree(rightTree);
+	}
+	
+	public int merge() {
+		return merge(leftTree, rightTree); 		
 	}
 	
 	/**
@@ -77,12 +84,6 @@ public class TernaryTree {
 
 	public void setRightTree(RightTree rightTree) {
 		this.rightTree = rightTree;
-	}
-	
-	public static void main(String[] args) {
-		TernaryTree ternaryTree = new TernaryTree("input2output11.txt");
-		System.out.println(ternaryTree.merge(ternaryTree.leftTree, ternaryTree.getRightTree()));
-		
 	}
 
 }
