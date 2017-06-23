@@ -1,6 +1,7 @@
 package br.pucrs.t2alpro3.ternarytree.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import br.pucrs.t2alpro3.ternarytree.enums.Position;
@@ -17,6 +18,8 @@ public class RightTree {
 
 	private Node root;
 	private int nodesCount;
+	private HashMap<Integer, Node> map = new HashMap<>();
+	
 	public RightTree() {
 		setNodesCount(0);
 	}
@@ -35,31 +38,27 @@ public class RightTree {
 		nodes = TreeUtils.loadNodesFromEntry(entry, Position.RIGHT);
 		setNodesCount(nodes.size());
 		TreeUtils.incrementBy(1);
-		
+		add(nodes.remove(0), null, null);
+		map.put(root.getValue(), root);
+		TreeUtils.incrementBy(1);
 		for (Node n : nodes) {
-			TreeUtils.incrementBy(1);
-			//add root
-			if(this.root == null) {
-				TreeUtils.incrementBy(2);
-				add(n, null, null);
-				continue;
-			}
-
 			//if n already exists verify its children
-			if(contains(n.getValue())) {
+			if(map.get(n.getValue()) != null) {
 				try {
-					if(!contains(n.getRight().getValue())) {
+					if(map.get(n.getRight().getValue()) == null) {	
 						TreeUtils.incrementBy(2);
 						add(n.getRight(), find(n.getValue()), Position.RIGHT);
+						map.put(n.getRight().getValue(), n.getRight());
 					}
 				} catch (NullPointerException npe) {
 					
 				}
 				
 				try {
-					if(!contains(n.getCentral().getValue())) {
+					if(map.get(n.getCentral().getValue()) == null) {
 						TreeUtils.incrementBy(2);
 						add(n.getCentral(), find(n.getValue()), Position.CENTRAL);
+						map.put(n.getCentral().getValue(), n.getCentral());
 					}
 				} catch (NullPointerException npe) {
 					
@@ -114,23 +113,34 @@ public class RightTree {
 		}
 
 		if (root == null && node != null && parent == null && node.getValue() == 1) {
+			map.put(node.getValue(), node);
 			root = node;
+			if(root.getCentral() != null) {
+				map.put(root.getCentral().getValue(), root.getCentral());
+			}
+			
+			if(root.getRight() != null) {
+				map.put(root.getRight().getValue(), root.getRight());
+			}
 			root.setParent(null);
 			TreeUtils.incrementBy(7);
 			return;
 		}
 
-		if (!contains(parent.getValue())) {
+//		if (!contains(parent.getValue())) {
+		if (map.get(parent.getValue()) == null) {
 			throw new IllegalArgumentException("Parent node not found;");
 		}
 
 		//TODO: verificar o que deve ser adicionado, se realmente precisa do find... ou se nao rpecisa do new
 		if (p.equals(Position.RIGHT)) {
 			node.setParent(parent);
+			map.put(node.getValue(), node);
 			parent.setRight(node);
 			TreeUtils.incrementBy(4);
 		} else if (p.equals(Position.CENTRAL)) {
 			node.setParent(parent);
+			map.put(node.getValue(), node);
 			parent.setCentral(node);
 			TreeUtils.incrementBy(4);
 		}
