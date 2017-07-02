@@ -1,7 +1,5 @@
 package br.pucrs.t2alpro3.ternarytree.model;
 
-import static br.pucrs.t2alpro3.ternarytree.utils.TreeUtils.count;
-
 import br.pucrs.t2alpro3.ternarytree.utils.TreeUtils;
 
 

@@ -3,6 +3,8 @@ package br.pucrs.t2alpro3.ternarytree.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.pucrs.t2alpro3.ternarytree.enums.Position;
+
 public class Node implements Comparable<Node>{
 	
 	private Node parent;
@@ -10,6 +12,7 @@ public class Node implements Comparable<Node>{
 	private Node left;
 	private Node right;
 	private int value;
+	private Position position;
 	
 	public Node(){
 		
@@ -114,4 +117,12 @@ public class Node implements Comparable<Node>{
         }
         return 0;
     }
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
 }

@@ -16,6 +16,7 @@ import br.pucrs.t2alpro3.ternarytree.utils.TreeUtils;
  */
 public class LeftTree extends Thread{
 
+	private List<Node> nodes;
 	private Node root;
 	private int nodesCount;
 	private HashMap<Integer, Node> map = new HashMap<>();
@@ -292,6 +293,14 @@ public class LeftTree extends Thread{
 
 	public void setNodesCount(int nodesCount) {
 		this.nodesCount = nodesCount;
+	}
+
+	public List<Node> getNodes() {
+		return nodes;
+	}
+
+	public void setNodes(List<Node> nodes) {
+		this.nodes = nodes;
 	}
 	
 }
